@@ -1,0 +1,117 @@
+.loginPage {
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.loginCard {
+	width: clamp(40rem, 50rem, 90%);
+	min-height: 20rem;
+	background-color: #fff;
+	border-radius: 1rem;
+	box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
+}
+.loginCard > h1 {
+	font-weight: 700;
+}
+.inputsContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	margin-top: 2rem;
+	margin-bottom: 3rem;
+}
+.inputsContainer > input {
+	width: 100%;
+	border-radius: 2rem;
+}
+.inputsContainer > input:not(:last-child) {
+	margin-bottom: 1rem;
+}
+.rememberMe {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	font-size: 1.4rem;
+	color: var(--5d5);
+}
+.rememberMe > input {
+	margin-right: 0.5rem;
+}
+.loginButton {
+	background: var(--black);
+	color: var(--white);
+	padding: 1rem 4rem;
+	border-radius: 0.5rem;
+}
+.error {
+	color: var(--ff6);
+	font-size: 1.3rem;
+	margin: 0rem auto 1rem 0;
+}
+@media screen and (max-width: 720px) {
+	.loginCard {
+		width: 90%;
+	}
+	.loginCard > h1 {
+		font-size: 2.2rem;
+		text-align: center;
+	}
+	.loginButton {
+		font-size: 1.4rem;
+	}
+}
+
+/* AuthPage Styling */
+.authContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.authContainer > h1 {
+	font-weight: 600;
+	font-size: 3.5rem;
+}
+
+.authCardsContainer {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	margin-top: 5rem;
+}
+.authCard {
+	box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.1);
+	padding: 5rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: 250ms all;
+	height: 20rem;
+	width: 30rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--white);
+	background: var(--black);
+}
+.authCard:hover {
+	box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.2);
+	transform: scale(1.05);
+}
+.authCard:first-child {
+	margin-right: 5rem;
+}
+.authCard > h1 {
+	font-weight: 600;
+	color: var(--white);
+}

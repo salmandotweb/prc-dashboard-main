@@ -1,0 +1,52 @@
+[
+	{
+		"id": 1,
+		"propertyID": "c0001",
+		"property": "King’s Cross Road, London, WC1X",
+		"city": "London",
+		"type": "Flat",
+		"price": "£1,000",
+		"dateTime": "January 7, 2022 12:51 pm",
+		"img": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVhdXRpZnVsJTIwaG91c2V8ZW58MHx8MHx8&w=1000&q=80"
+	},
+	{
+		"id": 2,
+		"propertyID": "c0002",
+		"property": "Studio Flat for rent in Malam Gardens, London, E14",
+		"city": "London",
+		"type": "Terraced",
+		"price": "£1,799",
+		"dateTime": "January 7, 2022 12:51 pm",
+		"img": "https://assets.architecturaldigest.in/photos/60083e76274aca243711c3a4/16:9/w_2560%2Cc_limit/ghaziabad-uttar-pradesh-homes-photos-1366x768.jpg"
+	},
+	{
+		"id": 3,
+		"propertyID": "c0003",
+		"property": "King’s Cross Road, London, WC1X",
+		"city": "London",
+		"type": "Share House",
+		"price": "£2,399",
+		"dateTime": "January 7, 2022 12:51 pm",
+		"img": "https://media.istockphoto.com/photos/single-family-new-construction-home-in-suburb-neighborhood-in-the-picture-id1147674297?b=1&k=20&m=1147674297&s=170667a&w=0&h=PSSRXxU3hgcuy6K5RLiN2YYTSG6IhKu9DVG0WgRp_fc="
+	},
+	{
+		"id": 4,
+		"propertyID": "c0004",
+		"property": "House share for a rent #2, N11",
+		"city": "London",
+		"type": "Detached",
+		"price": "£1,399",
+		"dateTime": "January 7, 2022 12:51 pm",
+		"img": "https://media.istockphoto.com/photos/beautiful-luxury-home-exterior-at-twilight-picture-id1026205392?k=20&m=1026205392&s=612x612&w=0&h=lYFMV5cOuQQpddmwsE5QLBCyhgWQ1OI46i_dalro9OE="
+	},
+	{
+		"id": 5,
+		"propertyID": "c0005",
+		"property": "Studio Flat for rent in Malam Gardens, London, E14",
+		"city": "London",
+		"type": "Warehouse",
+		"price": "£5,499",
+		"dateTime": "January 7, 2022 12:51 pm",
+		"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvYvk8BApMMbsBb8v07diSqICW0FitP9I2rQ&usqp=CAU"
+	}
+]

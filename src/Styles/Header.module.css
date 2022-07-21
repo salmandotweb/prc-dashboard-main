@@ -1,0 +1,133 @@
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	background: linear-gradient(to right, var(--f6f), var(--f5f));
+	color: var(--black);
+	padding: 1rem 3rem;
+	position: sticky;
+	top: 0;
+	z-index: 999999999999;
+}
+.logo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-family: Montserrat, sans-serif;
+	color: var(--black);
+}
+.bold {
+	font-weight: 800;
+	margin-right: 0.5rem;
+}
+.logo > p {
+	font-size: 0.7rem;
+}
+.admin {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	position: relative;
+}
+.adminDetails {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	flex-direction: column;
+	font-family: Poppins, sans-serif;
+	margin-right: 2rem;
+}
+.adminDetails > h3 {
+	font-size: 1.8rem;
+	font-weight: bold;
+}
+.adminDetails > h5 {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+.adminImage > img {
+	object-fit: cover;
+	width: 4.6rem;
+	height: 4.6rem;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.switchPanel {
+	position: relative;
+}
+.switchPanel > p {
+	font-weight: 500;
+	cursor: pointer;
+}
+.switchPanel > p:active {
+	transform: scale(0.98);
+}
+.panelLinks {
+	position: absolute;
+	top: 3rem;
+	left: -70%;
+	background: var(--black);
+	color: var(--white);
+	padding: 1rem;
+	border-radius: 0.5rem;
+	width: 25rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.panelLink {
+	color: var(--white);
+	transition: 250ms all;
+}
+.panelLink:hover {
+	transform: scale(1.1);
+}
+@media screen and (max-width: 492px) {
+	.adminDetails {
+		margin: 0;
+		position: absolute;
+		top: 5rem;
+		right: -1rem;
+		background: var(--black);
+		width: 10rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.3rem;
+		padding: 1rem 0;
+		display: none;
+		color: var(--white);
+	}
+	.adminDetails > h3 {
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
+	.adminDetails > h5 {
+		font-size: 0.8rem;
+		font-weight: 500;
+	}
+	.show {
+		display: flex;
+	}
+}
+@media screen and (max-width: 425px) {
+	.header {
+		padding: 0.5rem 2rem;
+	}
+	.logo > h1 {
+		font-size: 1.8rem;
+	}
+	.logo > p {
+		font-size: 0.7rem;
+	}
+	.adminImage > img {
+		width: 4rem;
+		height: 4rem;
+	}
+	.switchPanel {
+		display: none;
+	}
+}

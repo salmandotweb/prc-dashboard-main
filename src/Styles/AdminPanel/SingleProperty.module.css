@@ -1,0 +1,214 @@
+.singleProperty {
+	background: var(--white);
+	padding: 2rem;
+	border-radius: 0.5rem;
+	margin-top: 2.5rem;
+	padding-bottom: 5rem;
+}
+.title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.title > h4 {
+	font-weight: 600;
+	font-size: 1.6rem;
+}
+.title > p > span {
+	font-weight: 600;
+	margin-left: 0.5rem;
+}
+.location {
+	margin: 2rem 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.location > p {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	font-size: 1.4rem;
+	color: var(--999);
+}
+.propertyDetailsContainer {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.propertyDetails {
+	flex: 0.45;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	padding: 0 2rem;
+}
+.overview {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	border-bottom: 0.1rem solid var(--ebe);
+	padding-bottom: 1rem;
+}
+.overview > h4 {
+	font-weight: 600;
+}
+.overview > h4 > span {
+	font-weight: 400;
+	color: var(--999);
+	margin-left: 0.5rem;
+}
+.flatDetails {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	margin-top: 2.5rem;
+}
+.flatType {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.flatType > p {
+	color: var(--999);
+}
+.flatType > h4 > span {
+	margin-left: 0.5rem;
+	font-weight: 600;
+	color: var(--black);
+}
+.flatType > h4 {
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin-top: 1rem;
+}
+.icon {
+	color: var(--999);
+	font-size: 1.8rem;
+}
+.description {
+	margin: 2rem 0;
+}
+.description > h4 {
+	font-weight: 600;
+	border-bottom: 0.1rem solid var(--ebe);
+	padding-bottom: 1rem;
+}
+.description > p {
+	color: var(--999);
+	font-size: 1.5rem;
+	line-height: 3rem;
+	letter-spacing: 0.05rem;
+}
+.address {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+.address > h4 {
+	font-weight: 600;
+}
+.addressBtn {
+	background: var(--ebe);
+	color: var(--black);
+	font-size: 1.4rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.mapIcon {
+	margin-right: 0.5rem;
+}
+.propertyFeatures {
+	margin-top: 3rem;
+	width: 100%;
+}
+.propertyFeatures h3 {
+	padding-bottom: 1rem;
+}
+.featuresContainer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	margin-top: 1.5rem;
+}
+.featureBox {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 0 1rem;
+	margin-bottom: 0.5rem;
+	color: var(--999);
+}
+.featureIcon {
+	margin-right: 0.5rem;
+	color: var(--black);
+}
+@media screen and (max-width: 1152px) {
+	.propertyDetailsContainer {
+		flex-direction: column;
+	}
+}
+@media screen and (max-width: 659px) {
+	.propertyDetailsContainer {
+		flex-direction: column;
+	}
+	.title {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.title > h4 {
+		margin-bottom: 1rem;
+	}
+}
+@media screen and (max-width: 497px) {
+	.flatDetails {
+		justify-content: center;
+		flex-direction: column;
+	}
+	.flatType {
+		flex-direction: row;
+		width: 100%;
+		justify-content: space-between;
+	}
+	.flatType:not(:last-child) {
+		margin-bottom: 1rem;
+	}
+	.flatType > h4 {
+		margin: 0;
+	}
+}
+@media screen and (max-width: 407px) {
+	.singleProperty {
+		padding: 2rem 1rem;
+	}
+	.propertyDetails {
+		padding: 0 1rem;
+	}
+}
+@media screen and (max-width: 375px) {
+	.address {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.address > h4 {
+		margin-bottom: 1rem;
+	}
+}
+@media screen and (max-width: 320px) {
+	.description {
+		letter-spacing: 0;
+	}
+	.description > p {
+		font-size: 1.5rem;
+	}
+}

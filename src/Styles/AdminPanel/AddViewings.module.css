@@ -1,0 +1,60 @@
+.cardsContainer {
+	margin-top: 2rem;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.left {
+	flex: 0.5;
+	margin-right: 2rem;
+}
+.right {
+	flex: 0.5;
+}
+.container {
+	margin-top: 2rem;
+}
+.container input {
+	width: 100%;
+}
+.inputsContainer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.inputsContainer > input:not(:last-child) {
+	margin-right: 2rem;
+}
+.tenantDetails {
+	margin-top: 2rem;
+}
+.container > input:not(:last-child) {
+	margin-bottom: 2rem;
+}
+.agentDetails {
+	margin-bottom: 2rem;
+}
+@media screen and (max-width: 1108px) {
+	.cardsContainer {
+		flex-direction: column;
+	}
+	.left {
+		margin-right: 0;
+		margin-bottom: 2rem;
+		flex: 1;
+		width: 100%;
+	}
+	.right {
+		flex: 1;
+		width: 100%;
+	}
+}
+@media screen and (max-width: 431px) {
+	.inputsContainer {
+		flex-direction: column;
+	}
+	.inputsContainer > input:not(:last-child) {
+		margin-right: 0;
+		margin-bottom: 2rem;
+	}
+}

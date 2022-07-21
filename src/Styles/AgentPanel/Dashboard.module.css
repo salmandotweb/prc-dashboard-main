@@ -1,0 +1,157 @@
+.title > h2 {
+	font-size: 2.2rem;
+	font-weight: 600;
+}
+.title > p {
+	font-size: 1.4rem;
+}
+.dashboardCard {
+	margin-top: 2rem;
+	padding: 3rem;
+}
+.cardTitle > h1 {
+	font-weight: 600;
+}
+.cardTitle > p {
+	max-width: 90%;
+	margin-top: 1rem;
+	font-weight: 500;
+	color: var(--5d5);
+}
+.uploadDocumentsContainer {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+}
+.left {
+	flex: 0.5;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-auto-rows: auto;
+	grid-gap: 5rem;
+	padding-top: 2rem;
+}
+.right {
+	flex: 0.5;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.uploadIconContainer {
+	display: none !important;
+}
+.uploadDocuments {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.uploadDocuments > div {
+	background: #f0f1f5;
+	height: 5rem;
+	width: 5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.uploadDocuments > p {
+	font-weight: 600;
+	margin-left: 2rem;
+}
+.svg {
+	color: var(--999);
+	font-size: 3rem;
+	font-weight: 800;
+}
+.document {
+	color: var(--000);
+	font-size: 3rem;
+	font-weight: 800;
+}
+.fade {
+	color: var(--999);
+}
+.submitBtn {
+	background: var(--black);
+	color: var(--white);
+	padding: 1rem 3rem;
+}
+@media screen and (max-width: 1266px) {
+	.left {
+		flex: 0.6;
+	}
+	.right {
+		flex: 0.4;
+	}
+}
+@media screen and (max-width: 1196px) {
+	.left {
+		flex: 0.7;
+	}
+	.right {
+		flex: 0.3;
+	}
+	.right > img {
+		width: 100%;
+	}
+	.uploadDocumentsContainer {
+		margin-bottom: 4rem;
+	}
+}
+@media screen and (max-width: 1142px) {
+	.right {
+		display: none;
+	}
+	.left {
+		flex: 1;
+		width: 100%;
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media screen and (max-width: 988px) {
+	.left {
+		flex: 1;
+		width: 100%;
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media screen and (max-width: 750px) {
+	.left {
+		flex: 1;
+		width: 100%;
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.uploadDocuments {
+		box-shadow: 0 1rem 2rem hsl(0 0% 0% / 20%);
+		padding: 1.5rem;
+		border-radius: 0.5rem;
+	}
+}
+@media screen and (max-width: 592px) {
+	.cardTitle > h1 {
+		font-size: 2.2rem;
+	}
+	.cardTitle > p {
+		font-size: 1.4rem;
+		max-width: 100%;
+	}
+}
+@media screen and (max-width: 458px) {
+	.cardTitle > h1 {
+		font-size: 2.2rem;
+	}
+	.cardTitle > p {
+		font-size: 1.3rem;
+	}
+	.dashboardCard {
+		padding: 2rem;
+	}
+}
+@media screen and (max-width: 375px) {
+	.submitBtn {
+		width: 100%;
+	}
+}

@@ -1,0 +1,27 @@
+.cardsContainer {
+	margin-top: 2rem;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.inputsContainer {
+	margin-top: 2rem;
+}
+.input {
+	width: 100%;
+}
+.input:not(:last-child) {
+	margin-bottom: 2rem;
+}
+.personalInfo {
+	margin-right: 2rem;
+}
+@media screen and (max-width: 946px) {
+	.cardsContainer {
+		flex-direction: column;
+	}
+	.personalInfo {
+		margin-right: 0;
+		margin-bottom: 2rem;
+	}
+}

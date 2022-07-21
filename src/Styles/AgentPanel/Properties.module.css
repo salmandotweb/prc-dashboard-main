@@ -1,0 +1,158 @@
+.table {
+	margin-top: 2rem;
+}
+.propertyDocuments {
+	margin-top: 2rem;
+}
+.documentsContainer {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	padding-top: 1rem;
+}
+.documentIcon {
+	font-size: 2rem;
+	color: var(--black);
+	margin-right: 0.5rem;
+}
+.bookViewingContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.title {
+	flex-direction: column;
+	align-items: flex-start;
+}
+.title > p {
+	color: var(--999);
+	font-weight: 500;
+	margin-top: 1rem;
+}
+.location {
+	flex-direction: column;
+	align-items: flex-end;
+}
+.location > p {
+	margin-bottom: 1rem;
+	font-size: 1.6rem;
+}
+.location > p > span {
+	font-weight: bold;
+	color: var(--black);
+	margin-left: 0.5rem;
+}
+.bookViewing {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.bookBtn {
+	background: var(--black);
+	color: var(--white);
+	margin-right: 4rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.eyeIcon {
+	font-size: 2rem;
+	margin-right: 0.5rem;
+}
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(1rem);
+	z-index: 999999999999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.bookModal {
+	background: var(--eee);
+	z-index: 9999999999999;
+	padding: 2rem;
+	border-radius: 0.4rem;
+	width: clamp(60%, 1000px, 90%);
+	min-height: min(50%, 300px);
+}
+.cardsContainer {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.left {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-right: 2rem;
+}
+.right {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+.agentCard {
+	margin-bottom: 2rem;
+}
+.submitBtnContainer {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 2rem;
+}
+.submitBtn {
+	background: var(--black);
+	color: var(--white);
+}
+@media screen and (max-width: 1110px) {
+	.bookViewing {
+		flex-direction: column-reverse;
+	}
+	.bookBtn {
+		margin: 0;
+		margin-bottom: 2rem;
+	}
+	.bookViewingContainer {
+		align-items: flex-start;
+	}
+	.location {
+		margin: 0;
+	}
+}
+@media screen and (max-width: 936px) {
+	.bookViewingContainer {
+		flex-direction: column;
+	}
+	.location {
+		align-items: flex-start;
+	}
+	.bookViewing {
+		align-items: flex-start;
+		margin-top: 2rem;
+	}
+}
+@media screen and (max-width: 874px) {
+	.cardsContainer {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.left {
+		margin-right: 0;
+		margin-bottom: 2rem;
+	}
+	.backdrop {
+		position: absolute;
+	}
+}
+@media screen and (max-width: 370px) {
+	.bookModal {
+		width: clamp(60%, 1000px, 95%);
+	}
+}

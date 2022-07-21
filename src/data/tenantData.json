@@ -1,0 +1,42 @@
+[
+	{
+		"id": 1,
+		"tenantID": "c0001",
+		"tenant": "Provider 1",
+		"address": "95 Broad Street, Lowthorpe",
+		"email": "agent1@xyz.com",
+		"phone": "+44 20 7946 0612"
+	},
+	{
+		"id": 2,
+		"tenantID": "c0002",
+		"tenant": "Provider 2",
+		"address": "95 Broad Street, Lowthorpe",
+		"email": "agent1@xyz.com",
+		"phone": "+44 20 7946 0612"
+	},
+	{
+		"id": 3,
+		"tenantID": "c0003",
+		"tenant": "Provider 3",
+		"address": "95 Broad Street, Lowthorpe",
+		"email": "agent1@xyz.com",
+		"phone": "+44 20 7946 0612"
+	},
+	{
+		"id": 4,
+		"tenantID": "c0004",
+		"tenant": "Provider 4",
+		"address": "95 Broad Street, Lowthorpe",
+		"email": "agent1@xyz.com",
+		"phone": "+44 20 7946 0612"
+	},
+	{
+		"id": 5,
+		"tenantID": "c0005",
+		"tenant": "Provider 5",
+		"address": "95 Broad Street, Lowthorpe",
+		"email": "agent1@xyz.com",
+		"phone": "+44 20 7946 0612"
+	}
+]

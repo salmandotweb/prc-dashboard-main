@@ -1,0 +1,52 @@
+[
+	{
+		"id": 1,
+		"propertyID": "c0001",
+		"property": "King’s Cross Road, London, WC1X",
+		"agent": "Agent 1",
+		"date": "January 7, 2022",
+		"time": "12:51 pm",
+		"tenant": "Tenant 1",
+		"img": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVhdXRpZnVsJTIwaG91c2V8ZW58MHx8MHx8&w=1000&q=80"
+	},
+	{
+		"id": 2,
+		"propertyID": "c0002",
+		"property": "King’s Cross Road, London, WC1X",
+		"agent": "Agent 2",
+		"date": "January 7, 2022",
+		"time": "12:51 pm",
+		"tenant": "Tenant 2",
+		"img": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVhdXRpZnVsJTIwaG91c2V8ZW58MHx8MHx8&w=1000&q=80"
+	},
+	{
+		"id": 3,
+		"propertyID": "c0003",
+		"property": "King’s Cross Road, London, WC1X",
+		"agent": "Agent 3",
+		"date": "January 7, 2022",
+		"time": "12:51 pm",
+		"tenant": "Tenant 3",
+		"img": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVhdXRpZnVsJTIwaG91c2V8ZW58MHx8MHx8&w=1000&q=80"
+	},
+	{
+		"id": 4,
+		"propertyID": "c0004",
+		"property": "King’s Cross Road, London, WC1X",
+		"agent": "Agent 4",
+		"date": "January 7, 2022",
+		"time": "12:51 pm",
+		"tenant": "Tenant 4",
+		"img": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVhdXRpZnVsJTIwaG91c2V8ZW58MHx8MHx8&w=1000&q=80"
+	},
+	{
+		"id": 5,
+		"propertyID": "c0005",
+		"property": "King’s Cross Road, London, WC1X",
+		"agent": "Agent 5",
+		"date": "January 7, 2022",
+		"time": "12:51 pm",
+		"tenant": "Tenant 5",
+		"img": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVhdXRpZnVsJTIwaG91c2V8ZW58MHx8MHx8&w=1000&q=80"
+	}
+]

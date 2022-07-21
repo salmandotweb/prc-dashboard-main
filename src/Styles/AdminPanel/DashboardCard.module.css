@@ -1,0 +1,68 @@
+.dashboardCard {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--white);
+	padding: 5rem 3rem;
+	border-radius: 0.5rem;
+}
+.icon > svg {
+	font-size: 7rem;
+}
+.icon {
+	margin-right: 2rem;
+}
+.left {
+	display: flex;
+	align-items: center;
+	margin-right: 2rem;
+}
+.properties {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.properties > h3 {
+	font-size: 2rem;
+	font-weight: 500;
+}
+.line {
+	width: 100%;
+	height: 0.4rem;
+	background: var(--white);
+	border-radius: 5rem;
+	margin: 0.7rem 0;
+}
+.properties > p {
+	font-size: 1.3rem;
+}
+.number {
+	font-size: 4.5rem;
+	font-weight: 700;
+}
+@media screen and (max-width: 1232px) {
+	.dashboardCard {
+		width: 100%;
+	}
+}
+@media screen and (max-width: 514px) {
+	.dashboardCard {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 3rem;
+	}
+	.left {
+		margin-right: 0;
+		flex-direction: column;
+	}
+	.properties {
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+	.number {
+		margin-top: 2rem;
+	}
+}

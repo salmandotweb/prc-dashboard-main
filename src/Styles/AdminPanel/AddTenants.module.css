@@ -1,0 +1,49 @@
+.cardsContainer {
+	margin-top: 2rem;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.informationCard {
+	margin-right: 2rem;
+}
+.inputsContainer {
+	margin-top: 2rem;
+}
+.inputsContainer input {
+	width: 100%;
+}
+.inputsContainer > input:not(:last-child) {
+	margin-bottom: 2rem;
+}
+.aboutInputs {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+}
+.aboutInputs > input:not(:last-child) {
+	margin-right: 2rem;
+}
+.dateInput {
+	margin-bottom: 2rem;
+}
+@media screen and (max-width: 886px) {
+	.cardsContainer {
+		flex-direction: column;
+	}
+	.informationCard {
+		margin: 0;
+		margin-bottom: 2rem;
+	}
+}
+@media screen and (max-width: 375px) {
+	.aboutInputs {
+		flex-direction: column;
+	}
+
+	.aboutInputs > input:not(:last-child) {
+		margin-bottom: 1rem;
+		margin-right: 0;
+	}
+}

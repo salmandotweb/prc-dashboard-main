@@ -1,0 +1,47 @@
+[
+	{
+		"id": 1,
+		"agentID": "c0001",
+		"agent": "Agent 1",
+		"address": "95 Broad Street, Lowthorpe",
+		"email": "agent1@xyz.com",
+		"phone": "+44 20 7946 0612",
+		"totalProperties": "05"
+	},
+	{
+		"id": 2,
+		"agentID": "c0002",
+		"agent": "Agent 2",
+		"address": "95 Broad Street, Lowthorpe",
+		"email": "agent1@xyz.com",
+		"phone": "+44 20 7946 0612",
+		"totalProperties": "05"
+	},
+	{
+		"id": 3,
+		"agentID": "c0003",
+		"agent": "Agent 3",
+		"address": "95 Broad Street, Lowthorpe",
+		"email": "agent1@xyz.com",
+		"phone": "+44 20 7946 0612",
+		"totalProperties": "05"
+	},
+	{
+		"id": 4,
+		"agentID": "c0004",
+		"agent": "Agent 4",
+		"address": "95 Broad Street, Lowthorpe",
+		"email": "agent1@xyz.com",
+		"phone": "+44 20 7946 0612",
+		"totalProperties": "05"
+	},
+	{
+		"id": 5,
+		"agentID": "c0005",
+		"agent": "Agent 5",
+		"address": "95 Broad Street, Lowthorpe",
+		"email": "agent1@xyz.com",
+		"phone": "+44 20 7946 0612",
+		"totalProperties": "05"
+	}
+]
