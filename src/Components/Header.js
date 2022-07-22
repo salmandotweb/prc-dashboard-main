@@ -1,20 +1,31 @@
-import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { getToken, removeToken } from "../services/LocalStorageService";
-import { useLogoutUserMutation } from "../services/userAuthApi";
+import {
+	useLogoutUserMutation,
+	useLoggedUserDetailsQuery,
+} from "../services/userAuthApi";
 import classes from "../Styles/Header.module.css";
+import Loading from "./Loading/Loading";
 
-const Header = ({ role }) => {
+const Header = () => {
 	const [show, setShow] = useState(false);
-	const [showPanel, setShowPanel] = useState(false);
-	const location = useLocation();
-	const { pathname } = location;
+	const [userData, setUserData] = useState({
+		name: "",
+		email: "",
+		role: "",
+	});
+
 	const navigate = useNavigate();
+
 	const token = getToken();
+
+	// get user details
+	const { data, isSuccess, isFetching } = useLoggedUserDetailsQuery(token);
+
 	const [logoutUser] = useLogoutUserMutation();
-	const handleShow = () => {
-		setShow(!show);
-	};
+
+	// logout user
 	const handleLogout = async () => {
 		const res = await logoutUser({ token });
 		if (res.data && res.data.success === 1) {
@@ -22,6 +33,27 @@ const Header = ({ role }) => {
 			navigate("/");
 		}
 	};
+
+	// show/hide profile dropdown
+	const handleShow = () => {
+		setShow(!show);
+	};
+
+	// 👇️ if you only need to capitalize first letter
+	const capitalizeFirst = (str) => {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	};
+
+	// storing user details
+	useEffect(() => {
+		if (data && isSuccess) {
+			setUserData({
+				name: data.user.name,
+				email: data.user.email,
+				role: data.user.role,
+			});
+		}
+	}, [data, isSuccess, isFetching]);
 	return (
 		<div className={classes.header}>
 			<Link to="/" className={classes.logo}>
@@ -31,25 +63,6 @@ const Header = ({ role }) => {
 				</h1>
 				<p>Property Rooms Consultancy</p>
 			</Link>
-			{/* <div className={classes.switchPanel}>
-				<p onClick={() => setShowPanel(!showPanel)}>Switch Panel</p>
-				{showPanel && (
-					<>
-						<div className={classes.panelLinks}>
-							<Link to="/" className={classes.panelLink}>
-								Admin Panel
-							</Link>
-							<Link className={classes.panelLink} to="/provider/dashboard">
-								Provider Panel
-							</Link>
-							<Link to="/agentpanel/dashboard" className={classes.panelLink}>
-								Agent Panel
-							</Link>
-						</div>
-					</>
-				)}
-			</div> */}
-
 			<div className={classes.switchPanel}>
 				<p onClick={handleLogout}>Logout</p>
 			</div>
@@ -61,8 +74,14 @@ const Header = ({ role }) => {
 							? `${classes.adminDetails} ${classes.show}`
 							: classes.adminDetails
 					}>
-					<h3>John Smith</h3>
-					<h5>{role}</h5>
+					{isFetching ? (
+						<Loading />
+					) : (
+						<>
+							<h3>{capitalizeFirst(userData.name)}</h3>
+							<h5>{userData.role}</h5>
+						</>
+					)}
 				</div>
 				<div className={classes.adminImage} onClick={handleShow}>
 					<img src="/assets/userImage.jpg" alt="username" />

@@ -30,7 +30,22 @@ export const userAuthApi = createApi({
 				};
 			},
 		}),
+		loggedUserDetails: builder.query({
+			query: (token) => {
+				return {
+					url: "user-details",
+					method: "GET",
+					headers: {
+						authorization: `Bearer ${token}`,
+					},
+				};
+			},
+		}),
 	}),
 });
 
-export const { useLoginUserMutation, useLogoutUserMutation } = userAuthApi;
+export const {
+	useLoginUserMutation,
+	useLogoutUserMutation,
+	useLoggedUserDetailsQuery,
+} = userAuthApi;
