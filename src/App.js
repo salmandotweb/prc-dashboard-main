@@ -26,6 +26,7 @@ import AgentProfile from "./Pages/AgentPanel/Profile";
 import AgentProperties from "./Pages/AgentPanel/Properties";
 import AgentSingleProperty from "./Pages/AgentPanel/SingleProperty";
 import Login from "./Pages/Login/Login";
+import UserProfile from "../src/Components/Profile/Profile";
 
 function App() {
 	return (
@@ -34,6 +35,7 @@ function App() {
 				<Route path="/" element={<Login />} />
 				<Route path="/admin" element={<AdminPanel />}>
 					<Route index element={<Dashboard />} />
+					<Route path="myprofile" element={<UserProfile />} />
 					<Route path="properties" element={<Properties />} />
 					<Route path="properties/:id" element={<SingleProperty />} />
 					<Route path="properties/add" element={<AddProperty />} />
@@ -49,6 +51,7 @@ function App() {
 				</Route>
 				<Route path="/provider" element={<ProviderPanel />}>
 					<Route index path="dashboard" element={<ProviderDashboard />} />
+					<Route path="myprofile" element={<UserProfile />} />
 					<Route path="profile" element={<Profile />} />
 					<Route path="properties" element={<ProviderProperties />} />
 					<Route path="properties/:id" element={<SingleProviderProperty />} />
@@ -57,6 +60,7 @@ function App() {
 				</Route>
 				<Route path="/agentpanel" element={<AgentPanel />}>
 					<Route index path="dashboard" element={<AgentDashboard />} />
+					<Route path="myprofile" element={<UserProfile />} />
 					<Route path="profile" element={<AgentProfile />} />
 					<Route path="properties" element={<AgentProperties />} />
 					<Route path="properties/:id" element={<AgentSingleProperty />} />

@@ -6,7 +6,7 @@ import Sidebar from "../Components/ProviderPanel/Sidebar";
 const ProviderPanel = () => {
 	return (
 		<>
-			<Header role="Provider" />
+			<Header role="provider" />
 			<div className="container">
 				<Sidebar />
 				<Outlet />

@@ -6,7 +6,7 @@ import Header from "../Components/Header";
 const AdminPanel = () => {
 	return (
 		<>
-			<Header role="Admin" />
+			<Header role="admin" />
 			<div className="container">
 				<Sidebar />
 				<Outlet />

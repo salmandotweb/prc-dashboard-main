@@ -1,0 +1,40 @@
+.profileContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	width: 100%;
+	height: 100%;
+	text-align: left;
+	margin-top: 3rem;
+}
+.userDetails {
+	padding: 1rem 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	background-color: var(--white);
+	width: 100%;
+	margin-bottom: 2rem;
+}
+.userDetails > p {
+	margin-left: 1rem;
+	font-weight: 600;
+}
+.logoutBtn {
+	width: 100%;
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+.logoutBtn > button {
+	background: #000 !important;
+	color: #fff !important;
+}
+
+@media screen and (max-width: 425px) {
+	.logoutBtn {
+		align-items: center;
+		justify-content: center;
+	}
+}

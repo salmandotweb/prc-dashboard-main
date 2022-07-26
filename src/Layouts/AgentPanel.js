@@ -6,7 +6,7 @@ import Header from "../Components/Header";
 const AgentPanel = () => {
 	return (
 		<>
-			<Header role="Agent" />
+			<Header role="agent" />
 			<div className="container">
 				<Sidebar />
 				<Outlet />

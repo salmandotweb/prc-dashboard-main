@@ -8,7 +8,7 @@ import {
 import classes from "../Styles/Header.module.css";
 import Loading from "./Loading/Loading";
 
-const Header = () => {
+const Header = ({ role }) => {
 	const [show, setShow] = useState(false);
 	const [userData, setUserData] = useState({
 		name: "",
@@ -32,11 +32,6 @@ const Header = () => {
 			removeToken("token");
 			navigate("/");
 		}
-	};
-
-	// show/hide profile dropdown
-	const handleShow = () => {
-		setShow(!show);
 	};
 
 	// 👇️ if you only need to capitalize first letter
@@ -63,9 +58,6 @@ const Header = () => {
 				</h1>
 				<p>Property Rooms Consultancy</p>
 			</Link>
-			<div className={classes.switchPanel}>
-				<p onClick={handleLogout}>Logout</p>
-			</div>
 
 			<div className={classes.admin}>
 				<div
@@ -83,9 +75,11 @@ const Header = () => {
 						</>
 					)}
 				</div>
-				<div className={classes.adminImage} onClick={handleShow}>
-					<img src="/assets/userImage.jpg" alt="username" />
-				</div>
+				<Link to={`/${role}/myprofile`}>
+					<div className={classes.adminImage}>
+						<img src="/assets/userImage.jpg" alt="username" />
+					</div>
+				</Link>
 			</div>
 		</div>
 	);
