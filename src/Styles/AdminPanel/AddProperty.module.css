@@ -41,14 +41,11 @@
 }
 .inputsContainer {
 	margin-top: 2rem;
+	overflow: hidden;
+	width: 100%;
 }
 .inputsContainer > input {
 	width: 100%;
-}
-.inputsContainer > textarea {
-	resize: none;
-	width: 100%;
-	margin-top: 1.5rem;
 }
 .detailsInputs {
 	display: flex;

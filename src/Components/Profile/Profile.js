@@ -34,7 +34,7 @@ const Profile = () => {
 		}
 	}, [data, isSuccess, isFetching]);
 
-	// 👇️ if you only need to capitalize first letter
+	// if you only need to capitalize first letter
 	const capitalizeFirst = (str) => {
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	};

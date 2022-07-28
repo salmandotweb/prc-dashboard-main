@@ -41,7 +41,7 @@ const columns = [
 	{
 		name: "",
 		cell: (row) => (
-			<Link to={`/properties/${row.propertyID}`}>
+			<Link to={`/admin/properties/${row.propertyID}`}>
 				<button className="btn">
 					<GoLinkExternal />
 				</button>

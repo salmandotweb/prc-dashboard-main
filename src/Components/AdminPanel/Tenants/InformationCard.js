@@ -15,7 +15,7 @@ const InformationCard = () => {
 				<h3>Information</h3>
 				<input
 					type="text"
-					placeholder="Property ID"
+					placeholder="Tenant ID"
 					value={propertyID}
 					onChange={(e) => setPropertyID(e.target.value)}
 				/>

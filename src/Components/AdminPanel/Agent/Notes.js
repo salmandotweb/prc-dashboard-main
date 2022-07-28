@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import classes from "../../../Styles/AdminPanel/AddAgent.module.css";
 
 const Notes = () => {
@@ -8,14 +10,15 @@ const Notes = () => {
 			<div className="title">
 				<h3>Private Notes</h3>
 			</div>
-			<textarea
-				name=""
-				id=""
-				cols="30"
-				rows="8"
-				placeholder="......."
-				value={notes}
-				onChange={(e) => setNotes(e.target.value)}></textarea>
+			<div className="richTextEditorContainer">
+				<Editor
+					editorState={notes}
+					toolbarClassName="toolbarClassName"
+					wrapperClassName="wrapperClassName"
+					editorClassName="editorClassName"
+					onEditorStateChange={setNotes}
+				/>
+			</div>
 		</div>
 	);
 };

@@ -33,7 +33,7 @@ export const userAuthApi = createApi({
 		loggedUserDetails: builder.query({
 			query: (token) => {
 				return {
-					url: "user-details",
+					url: "user",
 					method: "GET",
 					headers: {
 						authorization: `Bearer ${token}`,

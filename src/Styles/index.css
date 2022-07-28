@@ -160,7 +160,9 @@ code {
 }
 .title > input {
 	margin-bottom: 0.5rem;
-	border: 0.1rem solid var(--white);
+	padding: 1rem;
+	border-radius: 0.3rem;
+	border: 0.1rem solid var(--e6e);
 }
 a {
 	color: var(--999);
@@ -253,5 +255,34 @@ a {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+}
+.richTextEditorContainer {
+	width: 41vw;
+}
+.rdw-editor-wrapper {
+	margin: 2rem 0;
+	border: 0.1rem solid var(--ccc) !important;
+	border-radius: 0.5rem;
+}
+.rdw-editor-toolbar {
+	border: none !important;
+}
+.rdw-editor-main {
+	height: 20rem !important;
+	padding: 0rem 1rem;
+}
+.rdw-editor-main::-webkit-scrollbar {
+	display: none !important;
+}
+
+@media screen and (max-width: 1440px) {
+	.richTextEditorContainer {
+		width: 50vw;
+	}
+}
+@media screen and (max-width: 1084px) {
+	.richTextEditorContainer {
+		width: 100%;
 	}
 }

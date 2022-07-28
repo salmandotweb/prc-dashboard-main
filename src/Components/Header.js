@@ -1,38 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { getToken, removeToken } from "../services/LocalStorageService";
-import {
-	useLogoutUserMutation,
-	useLoggedUserDetailsQuery,
-} from "../services/userAuthApi";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { getToken } from "../services/LocalStorageService";
+import { useLoggedUserDetailsQuery } from "../services/userAuthApi";
 import classes from "../Styles/Header.module.css";
 import Loading from "./Loading/Loading";
 
 const Header = ({ role }) => {
 	const [show, setShow] = useState(false);
+	const [showPanel, setShowPanel] = useState(false);
+	const location = useLocation();
+	const { pathname } = location;
+	const navigate = useNavigate();
 	const [userData, setUserData] = useState({
 		name: "",
 		email: "",
 		role: "",
 	});
 
-	const navigate = useNavigate();
+	const handleShow = () => {
+		setShow(!show);
+	};
 
 	const token = getToken();
 
 	// get user details
 	const { data, isSuccess, isFetching } = useLoggedUserDetailsQuery(token);
-
-	const [logoutUser] = useLogoutUserMutation();
-
-	// logout user
-	const handleLogout = async () => {
-		const res = await logoutUser({ token });
-		if (res.data && res.data.success === 1) {
-			removeToken("token");
-			navigate("/");
-		}
-	};
 
 	// 👇️ if you only need to capitalize first letter
 	const capitalizeFirst = (str) => {
@@ -49,6 +41,7 @@ const Header = ({ role }) => {
 			});
 		}
 	}, [data, isSuccess, isFetching]);
+
 	return (
 		<div className={classes.header}>
 			<Link to="/" className={classes.logo}>
@@ -58,6 +51,25 @@ const Header = ({ role }) => {
 				</h1>
 				<p>Property Rooms Consultancy</p>
 			</Link>
+
+			<div className={classes.switchPanel}>
+				<p onClick={() => setShowPanel(!showPanel)}>Switch Panel</p>
+				{showPanel && (
+					<>
+						<div className={classes.panelLinks}>
+							<Link to="/" className={classes.panelLink}>
+								Admin Panel
+							</Link>
+							<Link className={classes.panelLink} to="/provider/dashboard">
+								Provider Panel
+							</Link>
+							<Link to="/agentpanel/dashboard" className={classes.panelLink}>
+								Agent Panel
+							</Link>
+						</div>
+					</>
+				)}
+			</div>
 
 			<div className={classes.admin}>
 				<div

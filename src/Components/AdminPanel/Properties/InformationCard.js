@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
 
 const InformationCard = () => {
@@ -21,14 +23,15 @@ const InformationCard = () => {
 					value={name}
 					onChange={(e) => setName(e.target.value)}
 				/>
-				<textarea
-					name=""
-					id=""
-					rows="8"
-					placeholder="Description"
-					className="input"
-					value={description}
-					onChange={(e) => setDescription(e.target.value)}></textarea>
+				<div className="richTextEditorContainer">
+					<Editor
+						editorState={description}
+						toolbarClassName="toolbarClassName"
+						wrapperClassName="wrapperClassName"
+						editorClassName="editorClassName"
+						onEditorStateChange={setDescription}
+					/>
+				</div>
 			</div>
 			<div className={classes.detailsInputs}>
 				<input
