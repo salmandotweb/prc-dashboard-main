@@ -1,10 +1,72 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Field, Form } from "formik";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
+import { IoAddCircleSharp } from "react-icons/io5";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+const Feature = ({ value, children }) => {
+	return (
+		<label className={classes.checkbox}>
+			{children}
+			<Field type="checkbox" name="checked" value={value} />
+			{value}
+		</label>
+	);
+};
+
+const getLocalFeatures = () => {
+	let features = localStorage.getItem("features");
+	if (features) {
+		return JSON.parse(localStorage.getItem("features"));
+	} else {
+		return [];
+	}
+};
+
 const FeatureCard = () => {
+	const [showFeature, setShowFeature] = useState(false);
+	const [newFeature, setNewFeature] = useState("");
+	const [features, setFeatures] = useState(getLocalFeatures());
+	const [byDefaultFeatures, setByDefaultFeatures] = useState([
+		"Air Conditioning",
+		"Balcony",
+		"Barbeque",
+		"Basement",
+		"Bike Storage",
+		"Car Parking",
+		"Central Heating",
+		"Concierge",
+		"Disabled Access",
+		"Double Glazing",
+		"Driveway",
+		"En Suite",
+	]);
+
+	const handleChange = (event) => {
+		setNewFeature(event.target.value);
+	};
+
+	const handleNewFeature = (event) => {
+		event.preventDefault();
+		if (newFeature !== "") {
+			setNewFeature(event.target.value);
+			setFeatures([...features, newFeature]);
+			setNewFeature("");
+		}
+	};
+
+	// delete from local storage
+	const handleDelete = (index) => {
+		let newFeatures = [...features];
+		newFeatures.splice(index, 1);
+		setFeatures(newFeatures);
+	};
+
+	useEffect(() => {
+		localStorage.setItem("features", JSON.stringify(features));
+	}, [features]);
+
 	return (
 		<div className={`${classes.card} ${classes.features}`}>
 			<div className={classes.title}>
@@ -25,44 +87,46 @@ const FeatureCard = () => {
 							role="group"
 							aria-labelledby="checkbox-group"
 							className={classes.checkboxContainer}>
-							<label className={classes.checkbox}>
-								<Field type="checkbox" name="checked" value="Additional Side" />
-								Additional Side
-							</label>
-							<label>
-								<Field
-									type="checkbox"
-									name="checked"
-									value="Air Conditioning"
-								/>
-								Air Conditioning
-							</label>
-							<label>
-								<Field type="checkbox" name="checked" value="Barbeque" />
-								Barbeque
-							</label>
-							<label className={classes.checkbox}>
-								<Field type="checkbox" name="checked" value="Dryer" />
-								Dryer
-							</label>
-							<label>
-								<Field type="checkbox" name="checked" value="Furnished" />
-								Furnished
-							</label>
-							<label>
-								<Field type="checkbox" name="checked" value="Great location" />
-								Great location
-							</label>
-							<label className={classes.checkbox}>
-								<Field type="checkbox" name="checked" value="Gym" />
-								Gym
-							</label>
+							{byDefaultFeatures.map((feature) => {
+								return <Feature value={feature} />;
+							})}
+							{features.map((feature) => {
+								return (
+									<Feature value={feature}>
+										<button onClick={handleDelete}>Delete</button>
+									</Feature>
+								);
+							})}
 						</div>
 
 						{/* <button type="submit">Submit</button> */}
 					</Form>
 				)}
 			</Formik>
+
+			<div className={classes.addFeatureContainer}>
+				{showFeature && (
+					<div className="addFeature">
+						<input
+							type="text"
+							placeholder="Add Feature"
+							className="input"
+							value={newFeature}
+							onChange={handleChange}
+						/>
+						<button className="btn addFeatureBtn" onClick={handleNewFeature}>
+							<IoAddCircleSharp /> Add
+						</button>
+					</div>
+				)}
+				{!showFeature && (
+					<button
+						className="btn addFeatureBtn"
+						onClick={() => setShowFeature(true)}>
+						<IoAddCircleSharp /> Add New Feature
+					</button>
+				)}
+			</div>
 		</div>
 	);
 };
