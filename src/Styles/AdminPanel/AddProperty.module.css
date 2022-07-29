@@ -65,6 +65,7 @@
 }
 .checkboxContainer > label {
 	margin: 1rem;
+	position: relative;
 }
 .checkboxContainer > label > input {
 	margin-right: 0.5rem;

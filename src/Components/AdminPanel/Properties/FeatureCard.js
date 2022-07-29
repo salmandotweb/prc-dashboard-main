@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Field, Form } from "formik";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
-import { IoAddCircleSharp } from "react-icons/io5";
+import { IoAddCircleSharp, IoCloseCircle } from "react-icons/io5";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const Feature = ({ value, children }) => {
 	return (
 		<label className={classes.checkbox}>
-			{children}
 			<Field type="checkbox" name="checked" value={value} />
 			{value}
+			{children}
 		</label>
 	);
 };
@@ -93,7 +93,11 @@ const FeatureCard = () => {
 							{features.map((feature) => {
 								return (
 									<Feature value={feature}>
-										<button onClick={handleDelete}>Delete</button>
+										<button
+											className="btn featureDeleteBtn"
+											onClick={handleDelete}>
+											<IoCloseCircle />
+										</button>
 									</Feature>
 								);
 							})}
