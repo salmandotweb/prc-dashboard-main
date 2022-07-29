@@ -94,14 +94,39 @@ const Sidebar = () => {
 
 				<Link
 					to="/admin/rooms"
+					onClick={handleShow}
 					className={
-						pathname === "/admin/rooms"
+						pathname === "/admin/rooms" || pathname === "/admin/rooms/add"
 							? `${classes.sidebar_item} ${classes.active}`
 							: classes.sidebar_item
 					}>
 					<RiHotelBedFill className={classes.icon} />
 					<p onClick={handleShowSidebar}>Rooms</p>
 				</Link>
+				{pathname === "/admin/rooms" || pathname === "/admin/rooms/add" ? (
+					<div className={classes.propertiesOptions}>
+						<Link
+							to="/admin/rooms"
+							className={
+								pathname === "/admin/rooms"
+									? `${classes.subActive} ${classes.propertiesLinks}`
+									: `${classes.propertiesLinks}`
+							}>
+							<p onClick={handleShowSidebar}>All Rooms</p>
+						</Link>
+						<Link
+							to="/admin/rooms/add"
+							className={
+								pathname === "/admin/rooms/add"
+									? `${classes.subActive} ${classes.propertiesLinks}`
+									: `${classes.propertiesLinks}`
+							}>
+							<p onClick={handleShowSidebar}>Add new Room</p>
+						</Link>
+					</div>
+				) : (
+					""
+				)}
 				<Link
 					to="/admin/providers"
 					onClick={handleShow}

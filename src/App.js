@@ -27,6 +27,7 @@ import AgentProperties from "./Pages/AgentPanel/Properties";
 import AgentSingleProperty from "./Pages/AgentPanel/SingleProperty";
 import Login from "./Pages/Login/Login";
 import UserProfile from "../src/Components/Profile/Profile";
+import AddRoom from "./Pages/AdminPanel/AddRoom";
 
 function App() {
 	return (
@@ -40,6 +41,7 @@ function App() {
 					<Route path="properties/:id" element={<SingleProperty />} />
 					<Route path="properties/add" element={<AddProperty />} />
 					<Route path="rooms" element={<Rooms />} />
+					<Route path="rooms/add" element={<AddRoom />} />
 					<Route path="providers" element={<Providers />} />
 					<Route path="providers/add" element={<AddProvider />} />
 					<Route path="agent" element={<Agent />} />

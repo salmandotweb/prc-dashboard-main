@@ -31,13 +31,19 @@ const Login = () => {
 			} else if (res.data && res.data.Unverified === 1) {
 				setError({
 					status: true,
-					msg: res.data.message,
+					msg: "Your Email is not verified",
 					type: "error",
 				});
 			} else if (res.data && res.data.message === "Unauthorized") {
 				setError({
 					status: true,
 					msg: "Invalid Credentials",
+					type: "error",
+				});
+			} else if (res.data && res.data.success === 0) {
+				setError({
+					status: true,
+					msg: "User not Found",
 					type: "error",
 				});
 			}

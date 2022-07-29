@@ -57,7 +57,7 @@ const Header = ({ role }) => {
 				{showPanel && (
 					<>
 						<div className={classes.panelLinks}>
-							<Link to="/" className={classes.panelLink}>
+							<Link to="/admin" className={classes.panelLink}>
 								Admin Panel
 							</Link>
 							<Link className={classes.panelLink} to="/provider/dashboard">
