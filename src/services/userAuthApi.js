@@ -55,6 +55,17 @@ export const userAuthApi = createApi({
 				};
 			},
 		}),
+		allProperties: builder.query({
+			query: (token) => {
+				return {
+					headers: {
+						authorization: `Bearer ${token}`,
+					},
+					url: "all-property",
+					method: "GET",
+				};
+			},
+		}),
 	}),
 });
 
@@ -63,4 +74,5 @@ export const {
 	useLogoutUserMutation,
 	useLoggedUserDetailsQuery,
 	useAddPropertyMutation,
+	useAllPropertiesQuery,
 } = userAuthApi;

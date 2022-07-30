@@ -4,12 +4,13 @@ import SectionTitle from "../../Components/SectionTitle";
 import DataTable from "react-data-table-component";
 import { GoLinkExternal } from "react-icons/go";
 import { Link } from "react-router-dom";
-import data from "../../data/propertiesData.json";
+import { useAllPropertiesQuery } from "../../services/userAuthApi";
+import { getToken } from "../../services/LocalStorageService";
 
 const columns = [
 	{
 		name: "Property ID",
-		selector: (row) => row.propertyID,
+		selector: (row) => row.id,
 	},
 	{
 		name: "",
@@ -18,7 +19,7 @@ const columns = [
 	},
 	{
 		name: "Property",
-		selector: (row) => row.property,
+		selector: (row) => row.title,
 		grow: "2.5",
 	},
 	{
@@ -27,7 +28,7 @@ const columns = [
 	},
 	{
 		name: "Type",
-		selector: (row) => row.type,
+		selector: (row) => row.property_type,
 	},
 	{
 		name: "Price",
@@ -35,13 +36,13 @@ const columns = [
 	},
 	{
 		name: "Date & Time",
-		selector: (row) => row.dateTime,
+		selector: (row) => row.created_at,
 		grow: "2",
 	},
 	{
 		name: "",
 		cell: (row) => (
-			<Link to={`/admin/properties/${row.propertyID}`}>
+			<Link to={`/admin/properties/${row.id}`}>
 				<button className="btn">
 					<GoLinkExternal />
 				</button>
@@ -63,18 +64,23 @@ const Properties = () => {
 	const [search, setSearch] = useState("");
 	const [filterData, setFilterData] = useState("");
 
+	const token = getToken();
+
+	const { data: properties, error, isLoading } = useAllPropertiesQuery(token);
+
+	const propertiesData = properties?.properties;
+
 	const handleSearch = () => {
-		const result = data.filter((property) => {
+		const newFilter = propertiesData?.filter((value) => {
 			return (
-				property.property.toLowerCase().match(search.toLowerCase()) ||
-				property.propertyID.toLowerCase().match(search.toLowerCase()) ||
-				property.price.toLowerCase().match(search.toLowerCase()) ||
-				property.type.toLowerCase().match(search.toLowerCase()) ||
-				property.city.toLowerCase().match(search.toLowerCase())
+				value.title?.toLowerCase().includes(search.toLowerCase()) ||
+				value.city?.toLowerCase().includes(search.toLowerCase()) ||
+				value.property_type?.toLowerCase().includes(search.toLowerCase()) ||
+				value.price?.toLowerCase().includes(search.toLowerCase())
 			);
 		});
 
-		setFilterData(result);
+		setFilterData(newFilter);
 	};
 
 	useEffect(() => {

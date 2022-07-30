@@ -12,84 +12,33 @@ import SectionTitle from "../../Components/SectionTitle";
 import SelectProvider from "../../Components/AdminPanel/Properties/SelectProvider";
 import classes from "../../Styles/AdminPanel/AddProperty.module.css";
 import { getToken } from "../../services/LocalStorageService";
-import { useSelector } from "react-redux";
 import { useAddPropertyMutation } from "../../services/userAuthApi";
+import { useSelector } from "react-redux";
 
 const AddProperty = () => {
 	const token = getToken();
-	const [addProperty, { error }] = useAddPropertyMutation();
-	console.log(error);
+	const [addProperty] = useAddPropertyMutation();
+
+	const title = useSelector((state) => state.addProperty.title);
+	const description = useSelector((state) => state.addProperty.description);
+	const street = useSelector((state) => state.addProperty.street);
+	const city = useSelector((state) => state.addProperty.city);
+	const postal_code = useSelector((state) => state.addProperty.postal_code);
 
 	const property = {
-		id: 1,
-		title: "test_p",
-		description: "test_description",
-		street: "test_p",
-		city: "test_p",
-		postal_code: "test_p",
-		Detached: "test_ptest_p",
-		End_of_terraced: "test_p",
-		house_share: "test_ptest_ptest_ptest_ptest_p",
-		Studio: "test_ptest_p",
-		Terraced: "test_p",
-		Town_house: "test_p",
-		Warehouse: "test_p",
-		Semi_detached: "test_ptest_p",
-		Popular_category: "test_p",
-		Property_size: "test_ptest_p",
-		bedrooms: "test_p",
-		bathrooms: "test_p",
-		room: "test_p",
-		garage: "test_p",
-		year_built: "test_ptest_ptest_ptest_ptest_ptest_ptest_p",
-		property_type: "test_p",
-		price: "test_p",
-		price_prefix: "test_p",
-		secod_price: "test_p",
-		secod_price_prefix: "test_p",
-		Private_notes: "test_p",
-		created_at: "2022-07-28T15:57:28.000000Z",
-		updated_at: "2022-07-28T15:57:28.000000Z",
-		images: [
-			{
-				id: 1,
-				property_id: "1",
-				image_name: "test_p",
-				created_at: "2022-07-28T15:57:28.000000Z",
-				updated_at: "2022-07-28T15:57:28.000000Z",
-			},
-			{
-				id: 2,
-				property_id: "1",
-				image_name: "test_p",
-				created_at: "2022-07-28T15:57:28.000000Z",
-				updated_at: "2022-07-28T15:57:28.000000Z",
-			},
-			{
-				id: 3,
-				property_id: "1",
-				image_name: "test_p",
-				created_at: "2022-07-28T15:57:28.000000Z",
-				updated_at: "2022-07-28T15:57:28.000000Z",
-			},
-		],
-		Features: [
-			{
-				id: 1,
-				property_id: "2",
-				feature_id: "1",
-				created_at: "2022-07-28T15:52:51.000000Z",
-				updated_at: "2022-07-28T15:52:51.000000Z",
-				title: "Additional Side",
-			},
-		],
+		title: title,
+		description: description,
+		street: street,
+		city: city,
+		postal_code: postal_code,
 	};
 
 	const handleSubmit = async () => {
 		const res = await addProperty({
-			property: property,
 			token: token,
+			property: property,
 		});
+		console.log(res.error);
 	};
 
 	return (
