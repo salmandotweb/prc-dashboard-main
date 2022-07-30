@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
+import { addProperty } from "../../../features/addPropertySlice";
+import { useDispatch } from "react-redux";
 
 const PriceCard = () => {
 	const [price, setPrice] = useState("");
 	const [prefix, setPrefix] = useState("");
 	const [secondPrice, setSecondPrice] = useState("");
 	const [secondPrefix, setSecondPrefix] = useState("");
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(
+			addProperty({
+				price: price,
+				price_prefix: prefix,
+				secod_price: secondPrice,
+				secod_price_prefix: secondPrefix,
+			})
+		);
+	}, [price, prefix, secondPrice, secondPrefix]);
 
 	return (
 		<div className={`${classes.card} ${classes.priceCard}`}>

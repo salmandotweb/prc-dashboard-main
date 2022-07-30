@@ -1,11 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Editor } from "react-draft-wysiwyg";
+import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
+import { addProperty } from "../../../features/addPropertySlice";
+import { useDispatch } from "react-redux";
 
 const NotesCard = () => {
 	const [notes, setNotes] = useState("");
-	console.log(notes);
+
+	const [editorState, setEditorState] = useState(() =>
+		EditorState.createEmpty()
+	);
+
+	const onEditorStateChange = (editorState) => {
+		setEditorState(editorState);
+
+		const contentState = editorState.getCurrentContent().getPlainText();
+		setNotes(contentState);
+	};
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(
+			addProperty({
+				notes: notes,
+			})
+		);
+	}, [notes]);
+
 	return (
 		<div className={`${classes.card} ${classes.notesCard}`}>
 			<div className={classes.title}>
@@ -13,11 +36,11 @@ const NotesCard = () => {
 			</div>
 			<div className="richTextEditorContainer">
 				<Editor
-					editorState={notes}
+					editorState={editorState}
 					toolbarClassName="toolbarClassName"
 					wrapperClassName="wrapperClassName"
 					editorClassName="editorClassName"
-					onEditorStateChange={setNotes}
+					onEditorStateChange={onEditorStateChange}
 				/>
 			</div>
 		</div>

@@ -50,13 +50,6 @@ const Login = () => {
 		}
 	};
 
-	// Store User Auth Token in Redux Store
-	// let token = getToken();
-	// const dispatch = useDispatch();
-	// useEffect(() => {
-	// 	dispatch(setUserToken({ token: token }));
-	// }, [token, dispatch]);
-
 	return (
 		<div className={classes.loginPage}>
 			<form className={classes.loginCard} onSubmit={handleSubmit}>

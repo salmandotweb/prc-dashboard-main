@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
+import { addProperty } from "../../../features/addPropertySlice";
+import { useDispatch } from "react-redux";
 
 const options = [
 	{ value: "provider 1", label: "Provider 1" },
@@ -10,6 +12,15 @@ const options = [
 
 const SelectProvider = () => {
 	const [selectedOption, setSelectedOption] = useState("");
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(
+			addProperty({
+				provider_type: selectedOption.value,
+			})
+		);
+	}, [selectedOption]);
 
 	return (
 		<div className={`${classes.card} ${classes.selectProvider}`}>

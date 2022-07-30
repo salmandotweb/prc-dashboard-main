@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Formik, Field, Form } from "formik";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
 import { IoAddCircleSharp, IoCloseCircle } from "react-icons/io5";
+import { addProperty } from "../../../features/addPropertySlice";
+import { useDispatch } from "react-redux";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -42,6 +44,7 @@ const FeatureCard = () => {
 		"Driveway",
 		"En Suite",
 	]);
+	const [checkedFeatures, setCheckedFeatures] = useState([]);
 
 	const handleChange = (event) => {
 		setNewFeature(event.target.value);
@@ -67,6 +70,11 @@ const FeatureCard = () => {
 		localStorage.setItem("features", JSON.stringify(features));
 	}, [features]);
 
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(addProperty({ Features: checkedFeatures }));
+	}, [checkedFeatures]);
+
 	return (
 		<div className={`${classes.card} ${classes.features}`}>
 			<div className={classes.title}>
@@ -82,29 +90,32 @@ const FeatureCard = () => {
 					console.log(JSON.stringify(values, null, 2));
 				}}>
 				{({ values }) => (
-					<Form>
-						<div
-							role="group"
-							aria-labelledby="checkbox-group"
-							className={classes.checkboxContainer}>
-							{byDefaultFeatures.map((feature) => {
-								return <Feature value={feature} />;
-							})}
-							{features.map((feature) => {
-								return (
-									<Feature value={feature}>
-										<button
-											className="btn featureDeleteBtn"
-											onClick={handleDelete}>
-											<IoCloseCircle />
-										</button>
-									</Feature>
-								);
-							})}
-						</div>
+					setCheckedFeatures(values.checked),
+					(
+						<Form>
+							<div
+								role="group"
+								aria-labelledby="checkbox-group"
+								className={classes.checkboxContainer}>
+								{byDefaultFeatures.map((feature) => {
+									return <Feature value={feature} />;
+								})}
+								{features.map((feature) => {
+									return (
+										<Feature value={feature}>
+											<button
+												className="btn featureDeleteBtn"
+												onClick={handleDelete}>
+												<IoCloseCircle />
+											</button>
+										</Feature>
+									);
+								})}
+							</div>
 
-						{/* <button type="submit">Submit</button> */}
-					</Form>
+							{/* <button type="submit">Submit</button> */}
+						</Form>
+					)
 				)}
 			</Formik>
 

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { addProperty } from "../../../features/addPropertySlice";
+import { useDispatch } from "react-redux";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
 
 const PropertyCard = () => {
@@ -6,6 +8,16 @@ const PropertyCard = () => {
 	const handleChange = (e) => {
 		setPropertyType(e.target.value);
 	};
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(
+			addProperty({
+				property_type: propertyType,
+			})
+		);
+	}, [propertyType]);
+
 	return (
 		<div className={`${classes.propertyTypes} ${classes.card}`}>
 			<div className={classes.title}>

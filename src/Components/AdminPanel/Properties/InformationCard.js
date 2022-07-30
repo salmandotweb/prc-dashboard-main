@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Editor } from "react-draft-wysiwyg";
+import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
+import { addProperty } from "../../../features/addPropertySlice";
+import { useDispatch } from "react-redux";
 
 const InformationCard = () => {
 	const [name, setName] = useState("");
@@ -9,6 +12,30 @@ const InformationCard = () => {
 	const [street, setStreet] = useState("");
 	const [city, setCity] = useState("");
 	const [postalCode, setPostalCode] = useState("");
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(
+			addProperty({
+				title: name,
+				description: description,
+				street: street,
+				city: city,
+				postal_code: postalCode,
+			})
+		);
+	}, [name, description, street, city, postalCode]);
+
+	const [editorState, setEditorState] = useState(() =>
+		EditorState.createEmpty()
+	);
+
+	const onEditorStateChange = (editorState) => {
+		setEditorState(editorState);
+
+		const contentState = editorState.getCurrentContent().getPlainText();
+		setDescription(contentState);
+	};
 
 	return (
 		<div className={`${classes.information} ${classes.card}`}>
@@ -25,11 +52,11 @@ const InformationCard = () => {
 				/>
 				<div className="richTextEditorContainer">
 					<Editor
-						editorState={description}
+						editorState={editorState}
 						toolbarClassName="toolbarClassName"
 						wrapperClassName="wrapperClassName"
 						editorClassName="editorClassName"
-						onEditorStateChange={setDescription}
+						onEditorStateChange={onEditorStateChange}
 					/>
 				</div>
 			</div>

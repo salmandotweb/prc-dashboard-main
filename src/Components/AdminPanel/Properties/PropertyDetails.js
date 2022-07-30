@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
+import { addProperty } from "../../../features/addPropertySlice";
+import { useDispatch } from "react-redux";
 
 const PropertyDetails = () => {
 	const [propertySize, setPropertySize] = useState("");
@@ -8,6 +10,20 @@ const PropertyDetails = () => {
 	const [rooms, setRooms] = useState("");
 	const [garage, setGarage] = useState("");
 	const [year, setYear] = useState("");
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(
+			addProperty({
+				property_size: propertySize,
+				bedrooms: bedrooms,
+				bathrooms: bathrooms,
+				room: rooms,
+				garage: garage,
+				year_built: year,
+			})
+		);
+	}, [propertySize, bedrooms, bathrooms, rooms, garage, year]);
 
 	return (
 		<div className={`${classes.card} ${classes.propertyDetails}`}>

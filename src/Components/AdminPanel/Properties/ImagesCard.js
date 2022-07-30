@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import ImageUploading from "react-images-uploading";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
+import { addProperty } from "../../../features/addPropertySlice";
+import { useDispatch } from "react-redux";
 
 const ImagesCard = () => {
 	const [images, setImages] = useState([]);
@@ -12,6 +14,12 @@ const ImagesCard = () => {
 		console.log(imageList, addUpdateIndex);
 		setImages(imageList);
 	};
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(addProperty({ images: images }));
+	}, [images]);
+
 	return (
 		<div className={`${classes.card} ${classes.imagesCard}`}>
 			<div className={classes.title}>
