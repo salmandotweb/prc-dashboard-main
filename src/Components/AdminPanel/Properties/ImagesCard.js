@@ -2,22 +2,20 @@ import React, { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import ImageUploading from "react-images-uploading";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
-import { addProperty } from "../../../features/addPropertySlice";
+import { addImages } from "../../../features/addPropertySlice";
 import { useDispatch } from "react-redux";
 
 const ImagesCard = () => {
 	const [images, setImages] = useState([]);
 	const maxNumber = 69;
 
-	const onChange = (imageList, addUpdateIndex) => {
-		// data for submit
-		console.log(imageList, addUpdateIndex);
+	const onChange = (imageList) => {
 		setImages(imageList);
 	};
 
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(addProperty({ images: images }));
+		dispatch(addImages(images));
 	}, [images]);
 
 	return (
@@ -40,7 +38,6 @@ const ImagesCard = () => {
 					isDragging,
 					dragProps,
 				}) => (
-					// write your building UI
 					<div className="upload__image-wrapper">
 						<div className={classes.uploadImage}>
 							<div className={classes.chooseFile}>Choose File</div>

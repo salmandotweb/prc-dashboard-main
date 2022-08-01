@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
-import { addProperty } from "../../../features/addPropertySlice";
+import { addPropularCategory } from "../../../features/addPropertySlice";
 import { useDispatch } from "react-redux";
 
 const PopularCategory = () => {
@@ -12,11 +12,12 @@ const PopularCategory = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(
-			addProperty({
-				property_category: propertyCategory,
+			addPropularCategory({
+				Popular_category: propertyCategory,
 			})
 		);
 	}, [propertyCategory]);
+
 	return (
 		<div className={`${classes.card} ${classes.category}`}>
 			<div className={classes.title}>

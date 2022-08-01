@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
-import { addProperty } from "../../../features/addPropertySlice";
+import { addProvider } from "../../../features/addPropertySlice";
 import { useDispatch } from "react-redux";
 
 const options = [
@@ -16,7 +16,7 @@ const SelectProvider = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(
-			addProperty({
+			addProvider({
 				provider_type: selectedOption.value,
 			})
 		);

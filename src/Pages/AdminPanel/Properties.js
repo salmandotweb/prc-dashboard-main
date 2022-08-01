@@ -6,6 +6,7 @@ import { GoLinkExternal } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { useAllPropertiesQuery } from "../../services/userAuthApi";
 import { getToken } from "../../services/LocalStorageService";
+import Loading from "../../Components/Loading/Loading";
 
 const columns = [
 	{
@@ -66,7 +67,12 @@ const Properties = () => {
 
 	const token = getToken();
 
-	const { data: properties, error, isLoading } = useAllPropertiesQuery(token);
+	const {
+		data: properties,
+		error,
+		isFetching,
+		isLoading,
+	} = useAllPropertiesQuery(token);
 
 	const propertiesData = properties?.properties;
 
@@ -91,22 +97,28 @@ const Properties = () => {
 		<div className={`${classes.properties} section`}>
 			<SectionTitle section="Properties" subject="All Properties" />
 
-			<DataTable
-				columns={columns}
-				data={filterData}
-				customStyles={customStyles}
-				pagination
-				subHeader
-				subHeaderComponent={
-					<input
-						type="search"
-						placeholder="Search..."
-						value={search}
-						onChange={(e) => setSearch(e.target.value)}
-						className={`input ${classes.searchInput}`}
-					/>
-				}
-			/>
+			{isFetching ? (
+				<div className="loadingContainer">
+					<Loading />
+				</div>
+			) : (
+				<DataTable
+					columns={columns}
+					data={filterData ? filterData : propertiesData}
+					customStyles={customStyles}
+					pagination
+					subHeader
+					subHeaderComponent={
+						<input
+							type="search"
+							placeholder="Search..."
+							value={search}
+							onChange={(e) => setSearch(e.target.value)}
+							className={`input ${classes.searchInput}`}
+						/>
+					}
+				/>
+			)}
 		</div>
 	);
 };

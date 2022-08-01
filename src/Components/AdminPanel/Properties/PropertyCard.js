@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { addProperty } from "../../../features/addPropertySlice";
+import { addPropertyType } from "../../../features/addPropertySlice";
 import { useDispatch } from "react-redux";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
 
@@ -12,7 +12,7 @@ const PropertyCard = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(
-			addProperty({
+			addPropertyType({
 				property_type: propertyType,
 			})
 		);

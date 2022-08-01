@@ -3,7 +3,7 @@ import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
-import { addProperty } from "../../../features/addPropertySlice";
+import { addInformation } from "../../../features/addPropertySlice";
 import { useDispatch } from "react-redux";
 
 const InformationCard = () => {
@@ -16,7 +16,7 @@ const InformationCard = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(
-			addProperty({
+			addInformation({
 				title: name,
 				description: description,
 				street: street,

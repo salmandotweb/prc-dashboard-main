@@ -42,16 +42,16 @@ export const userAuthApi = createApi({
 			},
 		}),
 		addProperty: builder.mutation({
-			query: ({ token, data }) => {
+			query: (data) => {
 				return {
-					headers: {
-						authorization: `Bearer ${token}`,
-						"Content-Type": "application/json; charset=utf-8",
-						Accept: "application/json",
-					},
 					url: "add-property",
 					method: "POST",
 					body: data,
+					headers: {
+						authorization: `Bearer ${data.token}`,
+						"Content-Type": "application/json; charset=utf-8",
+						Accept: "application/json",
+					},
 				};
 			},
 		}),
@@ -66,6 +66,22 @@ export const userAuthApi = createApi({
 				};
 			},
 		}),
+		singleProperty: builder.mutation({
+			query: (id) => {
+				return {
+					url: "property-details",
+					method: "POST",
+					body: {
+						property_id: id,
+					},
+					headers: {
+						authorization: `Bearer ${id.token}`,
+						"Content-Type": "application/json; charset=utf-8",
+						Accept: "application/json",
+					},
+				};
+			},
+		}),
 	}),
 });
 
@@ -75,4 +91,5 @@ export const {
 	useLoggedUserDetailsQuery,
 	useAddPropertyMutation,
 	useAllPropertiesQuery,
+	useSinglePropertyMutation,
 } = userAuthApi;

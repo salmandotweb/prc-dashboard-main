@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	id: "",
 	title: "",
 	description: "",
 	street: "",
@@ -29,31 +28,7 @@ const initialState = {
 	secod_price: "",
 	secod_price_prefix: "",
 	Private_notes: "",
-	created_at: "",
-	updated_at: "",
-	images: [
-		{
-			id: "",
-			property_id: "",
-			image_name: "",
-			created_at: "",
-			updated_at: "2022-",
-		},
-		{
-			id: "",
-			property_id: "",
-			image_name: "",
-			created_at: "",
-			updated_at: "2022-",
-		},
-		{
-			id: "",
-			property_id: "",
-			image_name: "",
-			created_at: "",
-			updated_at: "2022-",
-		},
-	],
+	images: [],
 	Features: [],
 };
 
@@ -61,40 +36,60 @@ export const addPropertySlice = createSlice({
 	name: "addProperty",
 	initialState,
 	reducers: {
-		addProperty: (state, action) => {
+		addInformation: (state, action) => {
 			state.title = action.payload.title;
 			state.description = action.payload.description;
 			state.street = action.payload.street;
 			state.city = action.payload.city;
 			state.postal_code = action.payload.postal_code;
-			state.Detached = action.payload.Detached;
-			state.End_of_terraced = action.payload.End_of_terraced;
-			state.house_share = action.payload.house_share;
-			state.Studio = action.payload.Studio;
-			state.Terraced = action.payload.Terraced;
-			state.Town_house = action.payload.Town_house;
-			state.Warehouse = action.payload.Warehouse;
-			state.Semi_detached = action.payload.Semi_detached;
+		},
+		addPropularCategory: (state, action) => {
 			state.Popular_category = action.payload.Popular_category;
+		},
+		addPropertyDetails: (state, action) => {
 			state.Property_size = action.payload.Property_size;
-			state.provider_type = action.payload.provider_type;
 			state.bedrooms = action.payload.bedrooms;
 			state.bathrooms = action.payload.bathrooms;
 			state.room = action.payload.room;
 			state.garage = action.payload.garage;
 			state.year_built = action.payload.year_built;
-			state.property_type = action.payload.property_type;
+		},
+		addPrivateNotes: (state, action) => {
+			state.Private_notes = action.payload.Private_notes;
+		},
+		addPrice: (state, action) => {
 			state.price = action.payload.price;
 			state.price_prefix = action.payload.price_prefix;
 			state.secod_price = action.payload.secod_price;
 			state.secod_price_prefix = action.payload.secod_price_prefix;
-			state.Private_notes = action.payload.Private_notes;
-			state.created_at = action.payload.created_at;
-			state.updated_at = action.payload.updated_at;
+		},
+		addImages: (state, action) => {
 			state.images = action.payload.images;
+		},
+		addFeatures: (state, action) => {
 			state.Features = action.payload.Features;
+		},
+		addPropertyType: (state, action) => {
+			state.property_type = action.payload.property_type;
+		},
+		addLabel: (state, action) => {
+			state.property_label = action.payload.property_label;
+		},
+		addProvider: (state, action) => {
+			state.provider_type = action.payload.provider_type;
 		},
 	},
 });
 
-export const { addProperty } = addPropertySlice.actions;
+export const {
+	addInformation,
+	addPropularCategory,
+	addPropertyDetails,
+	addPrivateNotes,
+	addPrice,
+	addImages,
+	addFeatures,
+	addPropertyType,
+	addLabel,
+	addProvider,
+} = addPropertySlice.actions;

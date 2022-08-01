@@ -7,8 +7,29 @@ import { BiBed } from "react-icons/bi";
 import { GiBathtub } from "react-icons/gi";
 import { BsMap } from "react-icons/bs";
 import { FiCheckCircle } from "react-icons/fi";
+import { useParams } from "react-router-dom";
+import { useSinglePropertyMutation } from "../../services/userAuthApi";
+import { getToken } from "../../services/LocalStorageService";
+import { useEffect } from "react";
 
 const SingleProperty = () => {
+	const token = getToken();
+	const { id } = useParams();
+
+	const [singleProperty] = useSinglePropertyMutation();
+
+	const fetchSingleProperty = async () => {
+		const response = await singleProperty({
+			id: id,
+			token: token,
+		});
+		console.log(response);
+	};
+
+	useEffect(() => {
+		fetchSingleProperty();
+	}, []);
+
 	const features = [
 		"Furnished",
 		"Air Conditioning",
@@ -17,6 +38,7 @@ const SingleProperty = () => {
 		"Great Location",
 		"Dryer",
 	];
+
 	return (
 		<div className={`section ${classes.singlePropertyWrapper}`}>
 			<SectionTitle section="Properties" subject="View Property" />

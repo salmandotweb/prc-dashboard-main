@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Formik, Field, Form } from "formik";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
 import { IoAddCircleSharp, IoCloseCircle } from "react-icons/io5";
-import { addProperty } from "../../../features/addPropertySlice";
+import { addFeatures } from "../../../features/addPropertySlice";
 import { useDispatch } from "react-redux";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -72,7 +72,7 @@ const FeatureCard = () => {
 
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(addProperty({ Features: checkedFeatures }));
+		dispatch(addFeatures({ Features: checkedFeatures }));
 	}, [checkedFeatures]);
 
 	return (

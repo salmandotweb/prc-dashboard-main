@@ -187,6 +187,8 @@ a {
 .saveBtnContainer {
 	width: 100%;
 	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
 	padding-bottom: 1rem;
 }
 
@@ -320,4 +322,18 @@ a {
 	.richTextEditorContainer {
 		width: 100%;
 	}
+}
+.loadingContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 10rem;
+	background: var(--white);
+}
+
+.error {
+	color: red;
+	font-size: 1.6rem;
+	font-weight: 500;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
-import { addProperty } from "../../../features/addPropertySlice";
+import { addPrice } from "../../../features/addPropertySlice";
 import { useDispatch } from "react-redux";
 
 const PriceCard = () => {
@@ -12,7 +12,7 @@ const PriceCard = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(
-			addProperty({
+			addPrice({
 				price: price,
 				price_prefix: prefix,
 				secod_price: secondPrice,

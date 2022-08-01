@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
-import { addProperty } from "../../../features/addPropertySlice";
+import { addPropertyDetails } from "../../../features/addPropertySlice";
 import { useDispatch } from "react-redux";
 
 const PropertyDetails = () => {
@@ -14,8 +14,8 @@ const PropertyDetails = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(
-			addProperty({
-				property_size: propertySize,
+			addPropertyDetails({
+				Property_size: propertySize,
 				bedrooms: bedrooms,
 				bathrooms: bathrooms,
 				room: rooms,

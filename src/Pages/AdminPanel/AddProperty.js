@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FeatureCard from "../../Components/AdminPanel/Properties/FeatureCard";
 import ImagesCard from "../../Components/AdminPanel/Properties/ImagesCard";
 import InformationCard from "../../Components/AdminPanel/Properties/InformationCard";
@@ -16,6 +16,7 @@ import { useAddPropertyMutation } from "../../services/userAuthApi";
 import { useSelector } from "react-redux";
 
 const AddProperty = () => {
+	const [error, setError] = useState("");
 	const token = getToken();
 	const [addProperty] = useAddPropertyMutation();
 
@@ -24,21 +25,79 @@ const AddProperty = () => {
 	const street = useSelector((state) => state.addProperty.street);
 	const city = useSelector((state) => state.addProperty.city);
 	const postal_code = useSelector((state) => state.addProperty.postal_code);
+	const Detached = useSelector((state) => state.addProperty.Detached);
+	const End_of_terraced = useSelector(
+		(state) => state.addProperty.End_of_terraced
+	);
+	const house_share = useSelector((state) => state.addProperty.house_share);
+	const Studio = useSelector((state) => state.addProperty.Studio);
+	const Terraced = useSelector((state) => state.addProperty.Terraced);
+	const Town_house = useSelector((state) => state.addProperty.Town_house);
+	const Warehouse = useSelector((state) => state.addProperty.Warehouse);
+	const Semi_detached = useSelector((state) => state.addProperty.Semi_detached);
+	const Popular_category = useSelector(
+		(state) => state.addProperty.Popular_category
+	);
+	const Property_size = useSelector((state) => state.addProperty.Property_size);
+	const bedrooms = useSelector((state) => state.addProperty.bedrooms);
+	const bathrooms = useSelector((state) => state.addProperty.bathrooms);
+	const room = useSelector((state) => state.addProperty.room);
+	const garage = useSelector((state) => state.addProperty.garage);
+	const year_built = useSelector((state) => state.addProperty.year_built);
+	const property_type = useSelector((state) => state.addProperty.property_type);
+	const price = useSelector((state) => state.addProperty.price);
+	const price_prefix = useSelector((state) => state.addProperty.price_prefix);
+	const secod_price = useSelector((state) => state.addProperty.secod_price);
+	const secod_price_prefix = useSelector(
+		(state) => state.addProperty.secod_price_prefix
+	);
+	const Private_notes = useSelector((state) => state.addProperty.Private_notes);
 
-	const property = {
-		title: title,
-		description: description,
-		street: street,
-		city: city,
-		postal_code: postal_code,
-	};
+	const label = useSelector((state) => state.addProperty.property_label);
+	const providerType = useSelector((state) => state.addProperty.provider_type);
 
-	const handleSubmit = async () => {
-		const res = await addProperty({
-			token: token,
-			property: property,
-		});
-		console.log(res.error);
+	const images = useSelector((state) => state.addProperty.images);
+	const Features = useSelector((state) => state.addProperty.Features);
+
+	const handleAddProperty = async () => {
+		if (
+			title === "" ||
+			description === "" ||
+			street === "" ||
+			city === "" ||
+			postal_code === ""
+		) {
+			setError("Please fill all the fields");
+		} else {
+			const data = {
+				token: token,
+				title: title,
+				description: description,
+				street: street,
+				city: city,
+				postal_code: postal_code,
+				Popular_category: Popular_category,
+				Property_size: Property_size,
+				bedrooms: bedrooms,
+				bathrooms: bathrooms,
+				room: room,
+				garage: garage,
+				year_built: year_built,
+				property_type: property_type,
+				price: price,
+				price_prefix: price_prefix,
+				secod_price: secod_price,
+				secod_price_prefix: secod_price_prefix,
+				Private_notes: Private_notes,
+				lable: label,
+				provider_type: providerType,
+				images: ["image 1"],
+				features: [1, 2, 3],
+			};
+
+			const res = await addProperty(data);
+			console.log(res);
+		}
 	};
 
 	return (
@@ -65,7 +124,8 @@ const AddProperty = () => {
 				</div>
 			</div>
 			<div className="saveBtnContainer">
-				<button className="saveBtn" onClick={handleSubmit}>
+				{error && <div className="error">{error}</div>}
+				<button className="saveBtn" onClick={handleAddProperty}>
 					Save
 				</button>
 			</div>
