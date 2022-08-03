@@ -4,6 +4,12 @@ import classes from "../../../Styles/AdminPanel/AddProperty.module.css";
 import { IoAddCircleSharp, IoCloseCircle } from "react-icons/io5";
 import { addFeatures } from "../../../features/addPropertySlice";
 import { useDispatch } from "react-redux";
+import {
+	useAddFeatureMutation,
+	useAllFeaturesQuery,
+} from "../../../services/userAuthApi";
+import { getToken } from "../../../services/LocalStorageService";
+import Loading from "../../Loading/Loading";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -30,49 +36,57 @@ const FeatureCard = () => {
 	const [showFeature, setShowFeature] = useState(false);
 	const [newFeature, setNewFeature] = useState("");
 	const [features, setFeatures] = useState(getLocalFeatures());
-	const [byDefaultFeatures, setByDefaultFeatures] = useState([
-		"Air Conditioning",
-		"Balcony",
-		"Barbeque",
-		"Basement",
-		"Bike Storage",
-		"Car Parking",
-		"Central Heating",
-		"Concierge",
-		"Disabled Access",
-		"Double Glazing",
-		"Driveway",
-		"En Suite",
-	]);
 	const [checkedFeatures, setCheckedFeatures] = useState([]);
+	const [featuresDB, setFeaturesDB] = useState([]);
+
+	const checkIDs = featuresDB.map((feature) => {
+		return feature.id;
+	});
+
+	const checkTitle = featuresDB.map((feature) => {
+		return feature.title;
+	});
+
+	const IDs = checkedFeatures.map((feature) => {
+		if (checkTitle.includes(feature)) {
+			return checkIDs[checkTitle.indexOf(feature)];
+		}
+	});
+
+	const token = getToken();
+	const [addFeature] = useAddFeatureMutation();
+
+	// fetch all features from db
+	const { data, isLoading } = useAllFeaturesQuery(token);
+
+	useEffect(() => {
+		if (data) {
+			setFeaturesDB(data.features);
+		}
+	}, [data]);
 
 	const handleChange = (event) => {
 		setNewFeature(event.target.value);
 	};
 
-	const handleNewFeature = (event) => {
-		event.preventDefault();
-		if (newFeature !== "") {
-			setNewFeature(event.target.value);
+	const addFeatureToDB = async () => {
+		const res = await addFeature({ token: token, title: newFeature });
+		console.log(res);
+	};
+
+	const handleAddFeature = () => {
+		if (newFeature) {
 			setFeatures([...features, newFeature]);
+			addFeatureToDB(newFeature);
 			setNewFeature("");
+		} else {
+			alert("Please enter a feature");
 		}
 	};
 
-	// delete from local storage
-	const handleDelete = (index) => {
-		let newFeatures = [...features];
-		newFeatures.splice(index, 1);
-		setFeatures(newFeatures);
-	};
-
-	useEffect(() => {
-		localStorage.setItem("features", JSON.stringify(features));
-	}, [features]);
-
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(addFeatures({ Features: checkedFeatures }));
+		dispatch(addFeatures({ Features: IDs }));
 	}, [checkedFeatures]);
 
 	return (
@@ -97,23 +111,20 @@ const FeatureCard = () => {
 								role="group"
 								aria-labelledby="checkbox-group"
 								className={classes.checkboxContainer}>
-								{byDefaultFeatures.map((feature) => {
-									return <Feature value={feature} />;
-								})}
+								{isLoading ? (
+									<div className="loadingContainer">
+										<Loading />
+									</div>
+								) : (
+									featuresDB.map((feature) => {
+										return <Feature value={feature.title} id={feature.id} />;
+									})
+								)}
+
 								{features.map((feature) => {
-									return (
-										<Feature value={feature}>
-											<button
-												className="btn featureDeleteBtn"
-												onClick={handleDelete}>
-												<IoCloseCircle />
-											</button>
-										</Feature>
-									);
+									return <Feature value={feature}></Feature>;
 								})}
 							</div>
-
-							{/* <button type="submit">Submit</button> */}
 						</Form>
 					)
 				)}
@@ -129,7 +140,7 @@ const FeatureCard = () => {
 							value={newFeature}
 							onChange={handleChange}
 						/>
-						<button className="btn addFeatureBtn" onClick={handleNewFeature}>
+						<button className="btn addFeatureBtn" onClick={handleAddFeature}>
 							<IoAddCircleSharp /> Add
 						</button>
 					</div>

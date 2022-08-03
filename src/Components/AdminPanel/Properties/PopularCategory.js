@@ -30,7 +30,7 @@ const PopularCategory = () => {
 						type="radio"
 						id="properties"
 						value="Properties"
-						name="property"
+						name="propertyCategory"
 						onChange={handleChange}
 					/>
 					Properties
@@ -40,7 +40,7 @@ const PopularCategory = () => {
 						type="radio"
 						id="room"
 						value="Room"
-						name="property"
+						name="propertyCategory"
 						onChange={handleChange}
 					/>
 					Room

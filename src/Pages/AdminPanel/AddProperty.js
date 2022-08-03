@@ -25,16 +25,6 @@ const AddProperty = () => {
 	const street = useSelector((state) => state.addProperty.street);
 	const city = useSelector((state) => state.addProperty.city);
 	const postal_code = useSelector((state) => state.addProperty.postal_code);
-	const Detached = useSelector((state) => state.addProperty.Detached);
-	const End_of_terraced = useSelector(
-		(state) => state.addProperty.End_of_terraced
-	);
-	const house_share = useSelector((state) => state.addProperty.house_share);
-	const Studio = useSelector((state) => state.addProperty.Studio);
-	const Terraced = useSelector((state) => state.addProperty.Terraced);
-	const Town_house = useSelector((state) => state.addProperty.Town_house);
-	const Warehouse = useSelector((state) => state.addProperty.Warehouse);
-	const Semi_detached = useSelector((state) => state.addProperty.Semi_detached);
 	const Popular_category = useSelector(
 		(state) => state.addProperty.Popular_category
 	);
@@ -92,10 +82,11 @@ const AddProperty = () => {
 				lable: label,
 				provider_type: providerType,
 				images: ["image 1"],
-				features: [1, 2, 3],
+				features: Features,
 			};
 
 			const res = await addProperty(data);
+			console.log(data);
 			console.log(res);
 		}
 	};
