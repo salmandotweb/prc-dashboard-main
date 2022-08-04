@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "../../Styles/AdminPanel/SingleProperty.module.css";
 import SectionTitle from "../../Components/SectionTitle";
 import { GoLocation } from "react-icons/go";
@@ -13,8 +13,11 @@ import { getToken } from "../../services/LocalStorageService";
 import { useEffect } from "react";
 
 const SingleProperty = () => {
+	const [propertyDetails, setPropertyDetails] = useState({});
 	const token = getToken();
 	const { id } = useParams();
+
+	console.log(propertyDetails);
 
 	const [singleProperty] = useSinglePropertyMutation();
 
@@ -23,6 +26,7 @@ const SingleProperty = () => {
 			id: id,
 			token: token,
 		});
+		setPropertyDetails(response.data.property);
 		console.log(response);
 	};
 

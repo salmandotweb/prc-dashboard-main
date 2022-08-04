@@ -49,6 +49,8 @@ const AddProperty = () => {
 	const images = useSelector((state) => state.addProperty.images);
 	const Features = useSelector((state) => state.addProperty.Features);
 
+	console.log(images);
+
 	const handleAddProperty = async () => {
 		if (
 			title === "" ||
@@ -81,12 +83,11 @@ const AddProperty = () => {
 				Private_notes: Private_notes,
 				lable: label,
 				provider_type: providerType,
-				images: ["image 1"],
+				images: images,
 				features: Features,
 			};
 
 			const res = await addProperty(data);
-			console.log(data);
 			console.log(res);
 		}
 	};
