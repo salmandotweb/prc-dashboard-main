@@ -14,11 +14,14 @@ import classes from "../../Styles/AdminPanel/AddProperty.module.css";
 import { getToken } from "../../services/LocalStorageService";
 import { useAddPropertyMutation } from "../../services/userAuthApi";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const AddProperty = () => {
 	const [error, setError] = useState("");
 	const token = getToken();
 	const [addProperty] = useAddPropertyMutation();
+
+	const navigate = useNavigate();
 
 	const title = useSelector((state) => state.addProperty.title);
 	const description = useSelector((state) => state.addProperty.description);
@@ -57,7 +60,16 @@ const AddProperty = () => {
 			description === "" ||
 			street === "" ||
 			city === "" ||
-			postal_code === ""
+			postal_code === "" ||
+			Popular_category === "" ||
+			Property_size === "" ||
+			bedrooms === "" ||
+			bathrooms === "" ||
+			room === "" ||
+			garage === "" ||
+			year_built === "" ||
+			property_type === "" ||
+			price === ""
 		) {
 			setError("Please fill all the fields");
 		} else {
@@ -88,7 +100,9 @@ const AddProperty = () => {
 			};
 
 			const res = await addProperty(data);
-			console.log(res);
+			if (res.data.success === 1) {
+				navigate("/admin/properties");
+			}
 		}
 	};
 

@@ -14,10 +14,11 @@ import { useEffect } from "react";
 
 const SingleProperty = () => {
 	const [propertyDetails, setPropertyDetails] = useState({});
+	const [features, setFeatures] = useState([]);
 	const token = getToken();
 	const { id } = useParams();
 
-	console.log(propertyDetails);
+	console.log(propertyDetails, features);
 
 	const [singleProperty] = useSinglePropertyMutation();
 
@@ -27,6 +28,7 @@ const SingleProperty = () => {
 			token: token,
 		});
 		setPropertyDetails(response.data.property);
+		setFeatures(response.data.property.Features);
 		console.log(response);
 	};
 
@@ -34,14 +36,14 @@ const SingleProperty = () => {
 		fetchSingleProperty();
 	}, []);
 
-	const features = [
-		"Furnished",
-		"Air Conditioning",
-		"Great Location",
-		"Laundry",
-		"Great Location",
-		"Dryer",
-	];
+	// const features = [
+	// 	"Furnished",
+	// 	"Air Conditioning",
+	// 	"Great Location",
+	// 	"Laundry",
+	// 	"Great Location",
+	// 	"Dryer",
+	// ];
 
 	return (
 		<div className={`section ${classes.singlePropertyWrapper}`}>
@@ -50,15 +52,16 @@ const SingleProperty = () => {
 			<div className={classes.singlePropertyContainer}>
 				<div className={classes.singleProperty}>
 					<div className={classes.title}>
-						<h4>1 Bedroom apartment for rent in Eden Grove, London, N7</h4>
+						<h4>{propertyDetails?.title}</h4>
 						<p>
 							PCM
-							<span>£1,350</span>
+							<span>£{propertyDetails?.price}</span>
 						</p>
 					</div>
 					<div className={classes.location}>
 						<p>
-							<GoLocation /> High Rd, London N17, UK
+							<GoLocation /> {propertyDetails?.street}, {propertyDetails?.city},
+							UK
 						</p>
 						<p>£311/P/W</p>
 					</div>
@@ -70,36 +73,32 @@ const SingleProperty = () => {
 								<h4>Overview</h4>
 								<h4>
 									Property ID
-									<span>C0001</span>
+									<span>{propertyDetails?.id}</span>
 								</h4>
 							</div>
 							<div className={classes.flatDetails}>
 								<div className={classes.flatType}>
 									<p>Property Type</p>
-									<h4>Flat</h4>
+									<h4>{propertyDetails?.property_type}</h4>
 								</div>
 								<div className={classes.flatType}>
 									<p>Bedroom</p>
 									<h4>
-										<BiBed className={classes.icon} /> <span>1</span>
+										<BiBed className={classes.icon} />{" "}
+										<span>{propertyDetails?.bedrooms}</span>
 									</h4>
 								</div>
 								<div className={classes.flatType}>
 									<p>Bathroom</p>
 									<h4>
-										<GiBathtub className={classes.icon} /> <span>1</span>
+										<GiBathtub className={classes.icon} />{" "}
+										<span>{propertyDetails?.bathrooms}</span>
 									</h4>
 								</div>
 							</div>
 							<div className={classes.description}>
 								<h4>Description</h4>
-								<p>
-									Brand new newly refurbished 1 bed garden flat for rent. The
-									property comprise of a separate reception room/open plan
-									kitchen, double bedroom, shower/toilet and own private garden.
-									Within easy reach of Tottenham Hale and Seven Sisters
-									underground stations. Available 18th March 2022.
-								</p>
+								<p>{propertyDetails?.description}</p>
 							</div>
 							<div className={classes.address}>
 								<h4>Address</h4>
@@ -110,34 +109,36 @@ const SingleProperty = () => {
 							<div className={classes.flatDetails}>
 								<div className={classes.flatType}>
 									<p>Street</p>
-									<h4>High Road</h4>
+									<h4>{propertyDetails?.street}</h4>
 								</div>
 								<div className={classes.flatType}>
 									<p>City</p>
-									<h4>London</h4>
+									<h4>{propertyDetails?.city}</h4>
 								</div>
 								<div className={classes.flatType}>
 									<p>Postal Code</p>
-									<h4>N17 6QN</h4>
+									<h4>{propertyDetails?.postal_code}</h4>
 								</div>
 							</div>
-							<div className={classes.propertyFeatures}>
-								<div className="title">
-									<h3>Property Features</h3>
+							{features.length > 0 && (
+								<div className={classes.propertyFeatures}>
+									<div className="title">
+										<h3>Property Features</h3>
+									</div>
+									<div className={classes.featuresContainer}>
+										{features.map(({ title }) => {
+											return (
+												<>
+													<div className={classes.featureBox}>
+														<FiCheckCircle className={classes.featureIcon} />
+														{title}
+													</div>
+												</>
+											);
+										})}
+									</div>
 								</div>
-								<div className={classes.featuresContainer}>
-									{features.map((feature) => {
-										return (
-											<>
-												<div className={classes.featureBox}>
-													<FiCheckCircle className={classes.featureIcon} />
-													{feature}
-												</div>
-											</>
-										);
-									})}
-								</div>
-							</div>
+							)}
 						</div>
 					</div>
 				</div>

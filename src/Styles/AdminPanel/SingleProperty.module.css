@@ -95,11 +95,13 @@
 }
 .description {
 	margin: 2rem 0;
+	width: 100%;
 }
 .description > h4 {
 	font-weight: 600;
 	border-bottom: 0.1rem solid var(--ebe);
 	padding-bottom: 1rem;
+	width: 100%;
 }
 .description > p {
 	color: var(--999);
