@@ -15,6 +15,7 @@ import { useEffect } from "react";
 const SingleProperty = () => {
 	const [propertyDetails, setPropertyDetails] = useState({});
 	const [features, setFeatures] = useState([]);
+	const [images, setImages] = useState([]);
 	const token = getToken();
 	const { id } = useParams();
 
@@ -29,21 +30,13 @@ const SingleProperty = () => {
 		});
 		setPropertyDetails(response.data.property);
 		setFeatures(response.data.property.Features);
+		setImages(response.data.property.images);
 		console.log(response);
 	};
 
 	useEffect(() => {
 		fetchSingleProperty();
 	}, []);
-
-	// const features = [
-	// 	"Furnished",
-	// 	"Air Conditioning",
-	// 	"Great Location",
-	// 	"Laundry",
-	// 	"Great Location",
-	// 	"Dryer",
-	// ];
 
 	return (
 		<div className={`section ${classes.singlePropertyWrapper}`}>

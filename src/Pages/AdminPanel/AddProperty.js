@@ -52,24 +52,13 @@ const AddProperty = () => {
 	const images = useSelector((state) => state.addProperty.images);
 	const Features = useSelector((state) => state.addProperty.Features);
 
-	console.log(images);
-
 	const handleAddProperty = async () => {
 		if (
 			title === "" ||
 			description === "" ||
 			street === "" ||
 			city === "" ||
-			postal_code === "" ||
-			Popular_category === "" ||
-			Property_size === "" ||
-			bedrooms === "" ||
-			bathrooms === "" ||
-			room === "" ||
-			garage === "" ||
-			year_built === "" ||
-			property_type === "" ||
-			price === ""
+			postal_code === ""
 		) {
 			setError("Please fill all the fields");
 		} else {
@@ -102,6 +91,7 @@ const AddProperty = () => {
 			const res = await addProperty(data);
 			if (res.data.success === 1) {
 				navigate("/admin/properties");
+				window.location.reload();
 			}
 		}
 	};

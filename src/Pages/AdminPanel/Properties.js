@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useAllPropertiesQuery } from "../../services/userAuthApi";
 import { getToken } from "../../services/LocalStorageService";
 import Loading from "../../Components/Loading/Loading";
+import moment from "moment";
 
 const columns = [
 	{
@@ -20,7 +21,10 @@ const columns = [
 	},
 	{
 		name: "Property",
-		selector: (row) => row.title,
+		cell: (row) => <Link to={`/admin/properties/${row.id}`}>{row.title}</Link>,
+		style: {
+			color: "#000",
+		},
 		grow: "2.5",
 	},
 	{
@@ -37,7 +41,8 @@ const columns = [
 	},
 	{
 		name: "Date & Time",
-		selector: (row) => row.created_at,
+
+		selector: (row) => moment(row.created_at).format("MMMM Do YYYY, h:mm:ss a"),
 		grow: "2",
 	},
 	{

@@ -337,3 +337,7 @@ a {
 	font-size: 1.6rem;
 	font-weight: 500;
 }
+
+.sc-hKMtZM a {
+	color: var(--black) !important;
+}
