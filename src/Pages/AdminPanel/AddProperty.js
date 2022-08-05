@@ -89,6 +89,7 @@ const AddProperty = () => {
 			};
 
 			const res = await addProperty(data);
+			console.log(res);
 			if (res.data.success === 1) {
 				navigate("/admin/properties");
 				window.location.reload();
